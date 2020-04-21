@@ -3,8 +3,4 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteBase /employee
-RewriteRule ^(.+)$employee.html/$1 [L]
-
-RewriteBase /project
-RewriteRule ^(.+)$project.html/$1 [L]
+RewriteRule ^(.+)$ index.php/$1
