@@ -1,0 +1,2 @@
+# htaccessdemo
+ .htaccess file
