@@ -1,22 +1,31 @@
 <?php
     $requestedURL = $_SERVER['REQUEST_URI'];           // '/htaccessdemo/employee/display'
-    $urlParts = explode("/",$requestedURL);    // an array will be created saperated by '/'
+    $urlParts = explode("?",$requestedURL);    // seperating url as directory and query string by '?'
 
-    //var_dump(sizeof($urlParts));   // length of $urlParts '4'
+    $directory =$urlParts[0] ;    // getting url path
 
-    if(sizeof($urlParts)>=3){
-        $fileName = $urlParts[2];    // 'employee'
+    $directory = explode("/",$directory);  //seperating url with '/' to get individual directorys
+
+    //var_dump($urlParts);   // length of $urlParts '4'
+
+    if(sizeof($directory)>=3){
+        $fileName = $directory[2];    // 'employee'
     }
 
-    if (sizeof($urlParts)>=4){
-        $methodName = $urlParts[3];  // 'display'
+    if (sizeof($directory)>=4){
+        $methodName = $directory[3];  // 'display'
+    }
+
+    $message = "";
+    if (isset($_GET['message'])){
+        $message = $_GET['message'];
     }
 
     switch ($fileName){
 
         case "employee" :   require './employee.php';
                             switch ($methodName){
-                                case "display" : display(); break;
+                                case "display" : display($message); break;
                                 case "finish"  : finish();
                             }
                             break;

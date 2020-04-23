@@ -7,8 +7,9 @@
 </head>
 <body>
     <?php
-        function display(){
+        function display($messaage){
             echo("<h1>Employee Display</h1>");
+            echo("<p>Message : ".$messaage."</p>");
         }
 
         function finish(){
