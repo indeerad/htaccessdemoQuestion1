@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1406c26d-b995-4d58-800e-1795b9898db5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controller/employee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +33,12 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\htaccessdemo\pages" />
+      <recent name="C:\wamp64\www\htaccessdemo" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -40,7 +50,8 @@
       <option name="presentableId" value="Default" />
       <updated>1587528217376</updated>
       <workItem from="1587528218700" duration="2811000" />
-      <workItem from="1587610207686" duration="1772000" />
+      <workItem from="1587610207686" duration="2323000" />
+      <workItem from="1587630560142" duration="3083000" />
     </task>
     <servers />
   </component>

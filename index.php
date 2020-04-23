@@ -12,6 +12,7 @@
         $fileName = $directory[2];    // 'employee'
     }
 
+    $methodName="";
     if (sizeof($directory)>=4){
         $methodName = $directory[3];  // 'display'
     }
@@ -23,17 +24,17 @@
 
     switch ($fileName){
 
-        case "employee" :   require './employee.php';
+        case "employee" :   require './controller/employee.php';
                             switch ($methodName){
                                 case "display" : display($message); break;
-                                case "finish"  : finish();
+                                case "finish"  : finish($message);
                             }
                             break;
 
-        case "project" :   require './project.php';
+        case "project" :   require './controller/project.php';
                             switch ($methodName){
-                                case "display" : display(); break;
-                                case "finish"  : finish();
+                                case "display" : display($message); break;
+                                case "finish"  : finish($message);
                             }
                             break;
 
