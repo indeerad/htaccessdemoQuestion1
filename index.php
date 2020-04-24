@@ -18,23 +18,31 @@
     }
 
     $message = "";
-    if (isset($_GET['message'])){
-        $message = $_GET['message'];
+    if (isset($_GET['id'])){
+        $message = $_GET['id'];
     }
 
     switch ($fileName){
 
         case "employee" :   require './controller/employee.php';
                             switch ($methodName){
-                                case "display" : display($message); break;
-                                case "finish"  : finish($message);
+                                case "find" :   if ($message==""){
+                                                        find();
+                                                }else{
+                                                        findOne($message);
+                                                }
+                                                break;
                             }
                             break;
 
         case "project" :   require './controller/project.php';
                             switch ($methodName){
-                                case "display" : display($message); break;
-                                case "finish"  : finish($message);
+                                case "find" :   if ($message==""){
+                                                    find();
+                                                }else{
+                                                    findOne($message);
+                                                }
+                                                break;
                             }
                             break;
 

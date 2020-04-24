@@ -1,23 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee</title>
-</head>
-<body>
-<h1>Employee Page</h1>
-    <?php
-        function display($messaage){
-            echo("<h3>Display method called</h3>");
-            echo("<p>Passed message(parameter) : ".$messaage."</p>");
-        }
+<?php
+    $host = "localhost";
+    $username = "root";
+    $password = "1234";
+    $dbname = "simplerouter";
 
-        function finish($message){
-            echo("<h3>Finish method called</h3>");
-            echo("<p>Passed message(parameter) : ".$message."</p>");
+    $conn = new mysqli($host,$username,$password,$dbname);
+
+    if ($conn->connect_error){
+        die("Could not Connect to the Database");
+    }
+
+    function find(){
+        global $conn;
+        $stmt = $conn->prepare("select * from employee");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+
+        $employees=[];
+        while ($employee = $result->fetch_assoc()){
+            array_push($employees,$employee);
         }
+        $stmt->close();
+        $conn->close();
+        header('Content-Type: application/json');
+        echo json_encode($employees);
+
+    }
+
+    function findOne($id){
+        global $conn;
+        $stmt = $conn->prepare("select * from employee where id=?");
+        $stmt->bind_param('s',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $employee = $result->fetch_assoc();
+
+        $stmt->close();
+        $conn->close();
+
+        header('Content-Type: application/json');
+        echo json_encode($employee);
+    }
 
     ?>
-</body>
-</html>
