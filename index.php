@@ -1,51 +1,53 @@
 <?php
-    $requestedURL = $_SERVER['REQUEST_URI'];           // '/htaccessdemo/employee/display'
+    $requestedURL = $_SERVER['REQUEST_URI'];           // '/htaccessdemo/api/employees/5   or /htaccessdemo/api/employees'
     $urlParts = explode("?",$requestedURL);    // seperating url as directory and query string by '?'
 
-    $directory =$urlParts[0] ;    // getting url path
+    $resourceLocation =$urlParts[0] ;
 
-    $directory = explode("/",$directory);  //seperating url with '/' to get individual directorys
+    $resourceLocation = explode("/",$resourceLocation);
 
-    //var_dump($urlParts);   // length of $urlParts '4'
 
-    if(sizeof($directory)>=3){
-        $fileName = $directory[2];    // 'employee'
+    if (sizeof($resourceLocation)>=3){
+
+        if ($resourceLocation['2']=='api'){
+
+            if(sizeof($resourceLocation)>=4){
+                $controllerName = $resourceLocation[3];
+            }
+
+            $pathVariableName = "";
+            if(sizeof($resourceLocation)>=5){
+                $pathVariableName = $resourceLocation[4];
+            }
+
+            switch ($controllerName){
+
+                case "employees" :      require './controller/employee.php';
+                                        if ($pathVariableName==""){
+                                                find();
+                                        }else{
+                                                findOne($pathVariableName);
+                                        }
+
+                                        break;
+
+                case "projects" :       require './controller/project.php';
+
+                                        if ($pathVariableName==""){
+                                                find();
+                                        }else{
+                                                findOne($pathVariableName);
+                                        }
+
+                                        break;
+            }
+
+
+        }
     }
 
-    $methodName="";
-    if (sizeof($directory)>=4){
-        $methodName = $directory[3];  // 'display'
-    }
 
-    $message = "";
-    if (isset($_GET['id'])){
-        $message = $_GET['id'];
-    }
 
-    switch ($fileName){
 
-        case "employee" :   require './controller/employee.php';
-                            switch ($methodName){
-                                case "find" :   if ($message==""){
-                                                        find();
-                                                }else{
-                                                        findOne($message);
-                                                }
-                                                break;
-                            }
-                            break;
-
-        case "project" :   require './controller/project.php';
-                            switch ($methodName){
-                                case "find" :   if ($message==""){
-                                                    find();
-                                                }else{
-                                                    findOne($message);
-                                                }
-                                                break;
-                            }
-                            break;
-
-    }
 
 ?>
